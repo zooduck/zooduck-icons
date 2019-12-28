@@ -1,0 +1,29 @@
+{
+  "name": "zooduck-icons",
+  "version": "0.0.1-alpha",
+  "description": "css icon library for skyduck",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest",
+    "lint": "eslint ./src/**/*.*",
+    "start": "parcel src/examples.html",
+    "prebuild": "node clean && npm run lint",
+    "build": "parcel build src/index.ts --out-file zooduck-icons.min.js src/examples.html --public-url ./"
+  },
+  "author": "zooduck",
+  "license": "ISC",
+  "devDependencies": {
+    "@babel/core": "^7.7.7",
+    "@babel/preset-env": "^7.7.7",
+    "@babel/preset-typescript": "^7.7.7",
+    "@typescript-eslint/eslint-plugin": "^2.13.0",
+    "@typescript-eslint/parser": "^2.13.0",
+    "eslint": "^6.8.0",
+    "jest": "^24.9.0",
+    "jest-puppeteer": "^4.4.0",
+    "parcel-bundler": "^1.12.4",
+    "puppeteer": "^2.0.0",
+    "sass": "^1.24.0",
+    "typescript": "^3.7.4"
+  }
+}

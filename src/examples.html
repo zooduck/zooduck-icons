@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <link rel="stylesheet" href="style/main.scss">
+        <script src="index.ts"></script>
+    </head>
+    <body>
+        <div class="content">
+            <header class="header">
+                <h1>Zooduck Icons</h1>
+                <p>
+                    A sample library of scalable CSS Icons built from pure <a href="https://developer.mozilla.org/en-US/docs/Web/Web_Components" target="_blank">HTML Web Components</a>.
+                </p>
+            </header>
+            <div class="grid"></div>
+            <footer>
+                <a href="https://github.com/zooduck/zooduck-icons" target="_blank">zooduck-icons</a>
+            </footer>
+        </div>
+
+        <script>
+            const examples = [];
+            const exampleHTMLTemplate = [
+`<zooduck-icon-ICON_SUFFIX>
+</zooduck-icon-ICON_SUFFIX>`,
+`<zooduck-icon-ICON_SUFFIX
+    size="100"
+    color="cornflowerblue"
+    backgroundcolor="rebeccapurple">
+</zooduck-icon-ICON_SUFFIX>`,
+`<zooduck-icon-ICON_SUFFIX
+    size="200"
+    color="rebeccapurple">
+</zooduck-icon-ICON_SUFFIX>`,
+            ];
+            const exampleToggleHTMLTemplate = [
+`<zooduck-icon-ICON_SUFFIX>
+</zooduck-icon-ICON_SUFFIX>`,
+`<zooduck-icon-ICON_SUFFIX
+    size="100"
+    toggleoncolor="cornflowerblue"
+    toggleoffcolor="rebeccapurple">
+</zooduck-icon-ICON_SUFFIX>`,
+`<zooduck-icon-ICON_SUFFIX
+    size="200"
+    switchcolor="darkgray"
+    toggleoncolor="rebeccapurple"
+    toggleontext="On"
+    toggleofftext="Off">
+</zooduck-icon-ICON_SUFFIX>`,
+            ];
+            const icons = [
+                'circle',
+                'location',
+                'skyduck',
+                'skyduck-alt',
+                'skyduck-in-flight',
+                'toggle',
+            ];
+            icons.forEach((icon) => {
+                let exampleHTML;
+                switch (icon) {
+                    case 'toggle':
+                        exampleHTML = exampleToggleHTMLTemplate.map((example) => {
+                            return example.replace(/ICON_SUFFIX/g, icon);
+                        });
+                    break;
+                    default:
+                        exampleHTML = exampleHTMLTemplate.map((example) => {
+                            return example.replace(/ICON_SUFFIX/g, icon);
+                        });
+                }
+                examples.push(exampleHTML);
+            });
+            const exampleBlock = () => {
+                return new DOMParser().parseFromString(`
+                    <div class="example">
+                        <pre class="example__html">some code</pre>
+                        <div class="example__result"></div>
+                    </div>`, 'text/html').body.firstChild;
+            };
+            const buildCodeExamples = () => {
+                const grid = document.querySelector('.grid');
+                examples.forEach((icons) => {
+                    icons.forEach((icon) => {
+                        const block = exampleBlock();
+                        const html = block.querySelector('.example__html');
+                        const result = block.querySelector('.example__result');
+                        html.innerText = icon;
+                        result.innerHTML = icon;
+                        grid.appendChild(block);
+                    });
+                });
+            }
+            buildCodeExamples();
+        </script>
+    </body>
+</html>
