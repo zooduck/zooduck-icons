@@ -4,7 +4,7 @@ const tagName = 'zooduck-icon-toggle';
 
 export class HTMLZooduckIconToggleElement extends HTMLZooduckIconBaseElement {
     private _fontFamily = 'Calibri, sans-serif';
-    private _switchColor = '#fff';
+    private _toggleSwitchColor = '#fff';
     private _toggleOffColor = '#ccc';
     private _toggleOffText = '';
     private _toggleOffTextColor = '#fff';
@@ -20,7 +20,7 @@ export class HTMLZooduckIconToggleElement extends HTMLZooduckIconBaseElement {
         return [
             'fontfamily',
             'size',
-            'switchcolor',
+            'toggleswitchcolor',
             'toggleoffcolor',
             'toggleofftext',
             'toggleofftextcolor',
@@ -50,7 +50,7 @@ export class HTMLZooduckIconToggleElement extends HTMLZooduckIconBaseElement {
     private _buildStyleContent(): string {
         const style = `
             :host {
-                --toggle-icon-switch-color: ${this._switchColor};
+                --toggle-icon-switch-color: ${this._toggleSwitchColor};
                 --toggle-icon-font-family: ${this._fontFamily};
                 --toggle-icon-font-size: calc(var(--zooduck-icon-size) * .3);
                 --toggle-icon-off-color: ${this._toggleOffColor};
@@ -214,12 +214,12 @@ export class HTMLZooduckIconToggleElement extends HTMLZooduckIconBaseElement {
         return this._toggleOnTextColor;
     }
 
-    public set switchcolor(val: string) {
-        this._switchColor = val;
+    public set toggleswitchcolor(val: string) {
+        this._toggleSwitchColor = val;
     }
 
-    public get switchcolor(): string {
-        return this._switchColor;
+    public get toggleswitchcolor(): string {
+        return this._toggleSwitchColor;
     }
 
     protected attributeChangedCallback(name: string, _oldVal: string, newVal: string) {
