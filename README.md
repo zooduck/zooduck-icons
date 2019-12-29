@@ -10,7 +10,7 @@ https://zooduck.github.io/zooduck-icons/dist/examples.html
 Include the following `<script>` tag in the `<head>` of your page:
 
 ```html
-<script src="https://cdn.jsdelivr.net/gh/zooduck/zooduck-icons@master/dist/zooduck-icons.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/zooduck/zooduck-icons/dist/zooduck-icons.min.js"></script>
 ```
 
 Then, either:
