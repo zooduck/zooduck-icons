@@ -105,8 +105,16 @@ export class HTMLZooduckIconBaseElement extends HTMLElement {
         this._styleContent = textContent;
     }
 
+    public get styleContent(): string {
+        return this._styleContent;
+    }
+
     public set content(content: HTMLElement) {
         this._content = content;
+    }
+
+    public get content(): HTMLElement {
+        return this._content;
     }
 
     public render() {

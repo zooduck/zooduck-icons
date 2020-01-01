@@ -1,5 +1,7 @@
 import { HTMLZooduckIconBaseElement } from '../base/zooduck-icon.base';
 
+type ToggleState = 'off'|'on';
+
 const tagName = 'zooduck-icon-toggle';
 
 export class HTMLZooduckIconToggleElement extends HTMLZooduckIconBaseElement {
@@ -11,6 +13,7 @@ export class HTMLZooduckIconToggleElement extends HTMLZooduckIconBaseElement {
     private _toggleOnColor = '#222';
     private _toggleOnText  = '';
     private _toggleOnTextColor = '#fff';
+    private _toggleState: ToggleState = 'off';
 
     constructor() {
         super();
@@ -154,8 +157,25 @@ export class HTMLZooduckIconToggleElement extends HTMLZooduckIconBaseElement {
     private _build() {
         this.styleContent = this._buildStyleContent();
         this.content = this._buildContent();
+        this._registerEvents();
 
         this.render();
+    }
+
+    private _onCheckboxChange() {
+        this._toggleState = this._toggleState === 'off'
+            ? 'on'
+            : 'off';
+        this.dispatchEvent(new CustomEvent('zooduck-icon-toggle:change', {
+            detail: {
+                toggleState: this._toggleState,
+            }
+        }));
+    }
+
+    private _registerEvents() {
+        const checkbox = this.content.querySelector('input[type=checkbox]');
+        checkbox.addEventListener('change', this._onCheckboxChange.bind(this));
     }
 
     public set fontfamily(val: string) {
