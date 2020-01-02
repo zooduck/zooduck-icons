@@ -9,7 +9,7 @@
             <header class="header">
                 <h1>Zooduck Icons</h1>
                 <p>
-                    A sample library of scalable CSS Icons built from pure <a href="https://developer.mozilla.org/en-US/docs/Web/Web_Components" target="_blank">HTML Web Components</a>.
+                    Sample library of scalable CSS Icons built from pure <a href="https://developer.mozilla.org/en-US/docs/Web/Web_Components" target="_blank">HTML Web Components</a>.
                 </p>
             </header>
             <div class="grid"></div>
@@ -55,6 +55,7 @@
                 'skyduck',
                 'skyduck-alt',
                 'skyduck-in-flight',
+                'spinner-blades',
                 'toggle',
             ];
             icons.forEach((icon) => {
@@ -75,7 +76,7 @@
             const exampleBlock = () => {
                 return new DOMParser().parseFromString(`
                     <div class="example">
-                        <pre class="example__html">some code</pre>
+                        <pre class="example__html"></pre>
                         <div class="example__result"></div>
                     </div>`, 'text/html').body.firstChild;
             };
@@ -88,6 +89,17 @@
                         const result = block.querySelector('.example__result');
                         html.innerText = icon;
                         result.innerHTML = icon;
+
+                        const iconEl = new DOMParser().parseFromString(icon, 'text/html').body.firstChild;
+                        if (iconEl.nodeName === 'ZOODUCK-ICON-SKYDUCK-IN-FLIGHT' || iconEl.nodeName === 'ZOODUCK-ICON-SPINNER-BLADES') {
+                            if (iconEl.getAttribute('size') === '100') {
+                                iconEl.setAttribute('color', '#fff');
+                                iconEl.setAttribute('backgroundcolor', 'cornflowerblue');
+                                block.querySelector('.example__result').style.backgroundColor = 'cornflowerblue';
+                                result.innerHTML = '';
+                                result.appendChild(iconEl);
+                            }
+                        }
                         grid.appendChild(block);
                     });
                 });

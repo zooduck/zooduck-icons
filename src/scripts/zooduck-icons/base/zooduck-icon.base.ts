@@ -4,6 +4,9 @@ export class HTMLZooduckIconBaseElement extends HTMLElement {
     private _backgroundColor = '#fff';
     private _baseStyle: string;
     private _color = '#222';
+    private _defaultBackgroundColor: string;
+    private _defaultColor: string;
+    private _defaultSize: string;
     private _size = '50';
     private _styleContent: string;
     private _stylesheet: HTMLStyleElement;
@@ -11,6 +14,10 @@ export class HTMLZooduckIconBaseElement extends HTMLElement {
 
     constructor() {
         super();
+
+        this._defaultBackgroundColor = this._backgroundColor;
+        this._defaultColor = this._color;
+        this._defaultSize = this._size;
 
         this.attachShadow({ mode: 'open' });
 
@@ -60,12 +67,9 @@ export class HTMLZooduckIconBaseElement extends HTMLElement {
     }
 
     public set backgroundcolor(val: string) {
-        if (val === '') {
-            return;
-        }
-
-        this._backgroundColor = val;
-        this._syncAttr('backgroundcolor', val);
+        const parsedVal = val || this._defaultBackgroundColor;
+        this._backgroundColor = parsedVal;
+        this._syncAttr('backgroundcolor', parsedVal);
         this.update();
     }
 
@@ -74,12 +78,9 @@ export class HTMLZooduckIconBaseElement extends HTMLElement {
     }
 
     public set color(val: string) {
-        if (val === '') {
-            return;
-        }
-
-        this._color = val;
-        this._syncAttr('color', val);
+        const parsedVal = val || this._defaultColor;
+        this._color = parsedVal;
+        this._syncAttr('color', parsedVal);
         this.update();
     }
 
@@ -87,12 +88,24 @@ export class HTMLZooduckIconBaseElement extends HTMLElement {
         return this._color;
     }
 
-    public set size(val: string) {
-        if (val === '') {
-            return;
-        }
+    public set defaultBackgroundColor(val: string) {
+        this._backgroundColor = val;
+        this.update();
+    }
 
-        this._size = parseInt(val, 10).toString();
+    public set defaultColor(val: string) {
+        this._color = val;
+        this.update();
+    }
+
+    public set defaultSize(val: string) {
+        this._size = val;
+        this.update();
+    }
+
+    public set size(val: string) {
+        const parsedVal = val || this._defaultSize;
+        this._size = parseInt(parsedVal, 10).toString();
         this._syncAttr('size', val);
         this.update();
     }
@@ -130,7 +143,7 @@ export class HTMLZooduckIconBaseElement extends HTMLElement {
     }
 
     protected attributeChangedCallback(name: string, _oldVal: string, newVal: string) {
-        if (newVal === null || this[name] === newVal) {
+        if (this[name] === newVal) {
             return;
         }
 

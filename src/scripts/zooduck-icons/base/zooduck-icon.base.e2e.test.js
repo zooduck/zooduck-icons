@@ -83,4 +83,60 @@ describe('HTMLZooduckIconBaseElement', () => {
             '1',
         ]);
     });
+
+    it('should updpate its base attribute values if a default is set', async () => {
+        await page.setContent(`
+            <zooduck-icon-base></zooduck-icon-base>
+        `);
+
+        const el = await page.$('zooduck-icon-base');
+
+        let backgroundColorProp = await page.evaluate((el) => {
+            return el.backgroundcolor;
+        }, el);
+
+        expect(backgroundColorProp).toEqual('#fff');
+
+        await page.evaluate((el) => {
+            el.defaultBackgroundColor = 'BANANA';
+        }, el);
+
+        backgroundColorProp = await page.evaluate((el) => {
+            return el.backgroundcolor;
+        },  el);
+
+        expect(backgroundColorProp).toEqual('BANANA');
+
+        let colorProp = await page.evaluate((el) => {
+            return el.color;
+        }, el);
+
+        expect(colorProp).toEqual('#222');
+
+        await page.evaluate((el) => {
+            el.defaultColor = 'POMPER';
+        }, el);
+
+        colorProp = await page.evaluate((el) => {
+            return el.color;
+        },  el);
+
+        expect(colorProp).toEqual('POMPER');
+
+        let sizeProp = await page.evaluate((el) => {
+            return el.size;
+        }, el);
+
+        expect(sizeProp).toEqual('50');
+
+        await page.evaluate((el) => {
+            el.defaultSize = 'DOMPER';
+        }, el);
+
+        sizeProp = await page.evaluate((el) => {
+            return el.size;
+        },  el);
+
+        expect(sizeProp).toEqual('DOMPER');
+    });
 });

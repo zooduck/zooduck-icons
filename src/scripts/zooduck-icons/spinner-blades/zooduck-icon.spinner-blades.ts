@@ -5,6 +5,8 @@ const tagName = 'zooduck-icon-spinner-blades';
 export class HTMLZooduckIconSpinnerBladesElement extends HTMLZooduckIconBaseElement {
     constructor() {
         super();
+
+        this.defaultBackgroundColor = 'transparent';
     }
 
     private _build() {
@@ -60,6 +62,7 @@ export class HTMLZooduckIconSpinnerBladesElement extends HTMLZooduckIconBaseElem
                 height: var(--zooduck-icon-size);
                 background-color: var(--zooduck-icon-background-color);
                 clip-path: circle(50%);
+                padding: 10px;
             }
 
             .spinner-blades__part {
@@ -71,7 +74,6 @@ export class HTMLZooduckIconSpinnerBladesElement extends HTMLZooduckIconBaseElem
                 border-left-width: calc(var(--zooduck-icon-size) * .05);
                 border-radius: 0 0 50%;
                 transform-origin: center;
-                background-color: var(--zooduck-icon-background-color);
             }
 
             .spinner-blades__part.--top-left {

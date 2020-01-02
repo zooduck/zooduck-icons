@@ -21,11 +21,7 @@ a {
     grid-gap: 10px;
     padding: 10px;
 
-    @media (min-width: 768px) {
-        grid-template-columns: repeat(2, 1fr);
-    }
-
-    @media (min-width: 1024px) {
+    @media (min-width: 1100px) {
         grid-template-columns: repeat(3, 1fr);
     }
 }
@@ -41,7 +37,7 @@ a {
     }
     &__result {
         align-self: flex-start;
-        justify-self: left;
+        justify-self: center;
         padding: 10px;
         box-shadow: 2px 2px 15px #ccc;
     }
