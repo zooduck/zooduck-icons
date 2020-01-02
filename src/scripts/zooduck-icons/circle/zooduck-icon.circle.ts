@@ -6,7 +6,7 @@ export class HTMLZooduckIconCircleElement extends HTMLZooduckIconBaseElement {
     constructor() {
         super();
 
-        this.backgroundcolor = 'transparent';
+        this.defaultBackgroundColor = 'transparent';
     }
 
     private _build() {

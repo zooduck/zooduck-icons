@@ -28,12 +28,14 @@ a {
 .example {
     display: grid;
     grid-template-rows: auto 1fr;
+    max-width: 400px;
     &__html {
        color: #444;
        padding: 10px;
        background-color: floralwhite;
        border: dashed 3px #ccc;
        font-size: 16px;
+       white-space: pre-wrap;
     }
     &__result {
         align-self: flex-start;

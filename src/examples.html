@@ -19,37 +19,7 @@
         </div>
 
         <script>
-            const examples = [];
-            const exampleHTMLTemplate = [
-`<zooduck-icon-ICON_SUFFIX>
-</zooduck-icon-ICON_SUFFIX>`,
-`<zooduck-icon-ICON_SUFFIX
-    size="100"
-    color="cornflowerblue"
-    backgroundcolor="rebeccapurple">
-</zooduck-icon-ICON_SUFFIX>`,
-`<zooduck-icon-ICON_SUFFIX
-    size="200"
-    color="rebeccapurple">
-</zooduck-icon-ICON_SUFFIX>`,
-            ];
-            const exampleToggleHTMLTemplate = [
-`<zooduck-icon-ICON_SUFFIX>
-</zooduck-icon-ICON_SUFFIX>`,
-`<zooduck-icon-ICON_SUFFIX
-    size="100"
-    toggleoncolor="cornflowerblue"
-    toggleoffcolor="rebeccapurple">
-</zooduck-icon-ICON_SUFFIX>`,
-`<zooduck-icon-ICON_SUFFIX
-    size="200"
-    toggleswitchcolor="darkgray"
-    toggleoncolor="rebeccapurple"
-    toggleontext="On"
-    toggleofftext="Off">
-</zooduck-icon-ICON_SUFFIX>`,
-            ];
-            const icons = [
+            const iconNames = [
                 'circle',
                 'location',
                 'skyduck',
@@ -58,21 +28,61 @@
                 'spinner-blades',
                 'toggle',
             ];
-            icons.forEach((icon) => {
-                let exampleHTML;
-                switch (icon) {
-                    case 'toggle':
-                        exampleHTML = exampleToggleHTMLTemplate.map((example) => {
-                            return example.replace(/ICON_SUFFIX/g, icon);
-                        });
-                    break;
-                    default:
-                        exampleHTML = exampleHTMLTemplate.map((example) => {
-                            return example.replace(/ICON_SUFFIX/g, icon);
-                        });
-                }
-                examples.push(exampleHTML);
-            });
+            const iconAttributes = {
+                standard: [
+                    {},
+                    {
+                        size: '100',
+                        backgroundcolor: 'rebeccapurple',
+                        color: 'cornflowerblue',
+                    },
+                    {
+                        size: '200',
+                        color: 'rebeccapurple',
+
+                    },
+                ],
+                'skyduck-in-flight': [
+                    {},
+                    {
+                        size: '100',
+                        color: 'cornflowerblue',
+                    },
+                    {
+                        size: '200',
+                        color: 'rebeccapurple',
+
+                    },
+                ],
+                'spinner-blades': [
+                    {},
+                    {
+                        size: '100',
+                        color: 'cornflowerblue',
+                    },
+                    {
+                        size: '200',
+                        color: 'rebeccapurple',
+
+                    },
+                ],
+                toggle: [
+                    {},
+                    {
+                        size: '100',
+                        toggleoncolor: 'cornflowerblue',
+                    },
+                    {
+                        size: '200',
+                        toggleoncolor: 'rebeccapurple',
+                        toggleontext: 'On',
+                        toggleofftext: 'Off',
+
+                    },
+                ],
+            };
+
+            const grid = document.querySelector('.grid');
             const exampleBlock = () => {
                 return new DOMParser().parseFromString(`
                     <div class="example">
@@ -80,30 +90,33 @@
                         <div class="example__result"></div>
                     </div>`, 'text/html').body.firstChild;
             };
-            const buildCodeExamples = () => {
-                const grid = document.querySelector('.grid');
-                examples.forEach((icons) => {
-                    icons.forEach((icon) => {
-                        const block = exampleBlock();
-                        const html = block.querySelector('.example__html');
-                        const result = block.querySelector('.example__result');
-                        html.innerText = icon;
-                        result.innerHTML = icon;
 
-                        const iconEl = new DOMParser().parseFromString(icon, 'text/html').body.firstChild;
-                        if (iconEl.nodeName === 'ZOODUCK-ICON-SKYDUCK-IN-FLIGHT' || iconEl.nodeName === 'ZOODUCK-ICON-SPINNER-BLADES') {
-                            if (iconEl.getAttribute('size') === '100') {
-                                iconEl.setAttribute('color', '#fff');
-                                iconEl.setAttribute('backgroundcolor', 'cornflowerblue');
-                                block.querySelector('.example__result').style.backgroundColor = 'cornflowerblue';
-                                result.innerHTML = '';
-                                result.appendChild(iconEl);
-                            }
-                        }
-                        grid.appendChild(block);
+            const buildCodeExamples = () => {
+                iconNames.forEach((iconName) => {
+                    const baseIconEl = document.createElement(`zooduck-icon-${iconName}`);
+                    const attrConfig = iconName.search(/^(circle|location|skyduck|skyduck-alt)$/) !== -1
+                        ? 'standard'
+                        : iconName;
+                    const attributes = iconAttributes[attrConfig];
+
+                    const templateEls = attributes.map((attrs) => {
+                        const iconEl = baseIconEl.cloneNode(true);
+                        Object.keys(attrs).forEach((attr) => {
+                            iconEl.setAttribute(attr, attrs[attr]);
+                        });
+
+                        return iconEl;
+                    });
+
+                    templateEls.forEach((el) => {
+                        const example = exampleBlock();
+                        example.querySelector('.example__html').innerText = el.outerHTML;
+                        example.querySelector('.example__result').appendChild(el);
+                        grid.appendChild(example);
                     });
                 });
-            }
+            };
+
             buildCodeExamples();
         </script>
     </body>
