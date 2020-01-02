@@ -51,6 +51,13 @@ export class HTMLZooduckIconToggleElement extends HTMLZooduckIconBaseElement {
             </div>
         `, 'text/html').body.firstChild as HTMLElement;
 
+        content.querySelector('input').addEventListener('click', (e: Event) => {
+            // If a user clicks or taps on zooduck-icon-toggle
+            // the checkbox will fire its own click event
+            // (even with display set to none)
+            e.stopPropagation();
+        });
+
         return content;
     }
 
