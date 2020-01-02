@@ -23,21 +23,25 @@ export class HTMLZooduckIconToggleElement extends HTMLZooduckIconBaseElement {
         return [
             'fontfamily',
             'size',
-            'toggleswitchcolor',
             'toggleoffcolor',
             'toggleofftext',
             'toggleofftextcolor',
             'toggleoncolor',
             'toggleontext',
             'toggleontextcolor',
+            'togglestate',
+            'toggleswitchcolor',
         ];
     }
 
     private _buildContent(): HTMLElement {
+        const checked = this._toggleState === 'on'
+            ? 'checked'
+            : '';
         const content = new DOMParser().parseFromString(`
             <div class="toggle-icon">
                 <label>
-                    <input type="checkbox" />
+                    <input type="checkbox" ${checked} />
                     <div class="toggle-icon__switch-base">
                         <span class="toggle-icon__text --off">${this._toggleOffText}</span>
                         <span class="toggle-icon__text --on">${this._toggleOnText}</span>
@@ -232,6 +236,14 @@ export class HTMLZooduckIconToggleElement extends HTMLZooduckIconBaseElement {
 
     public get toggleontextcolor() {
         return this._toggleOnTextColor;
+    }
+
+    public set togglestate(val: ToggleState) {
+        this._toggleState = val;
+    }
+
+    public get togglestate(): ToggleState {
+        return this._toggleState;
     }
 
     public set toggleswitchcolor(val: string) {
