@@ -14,6 +14,7 @@ export class HTMLZooduckIconToggleElement extends HTMLZooduckIconBaseElement {
     private _toggleOnText  = '';
     private _toggleOnTextColor = '#fff';
     private _toggleState: ToggleState = 'off';
+    private _width = '0'; // the icon's width is automatically calculated based on its size attribute, but if a fixed width is desired it can be set using this attribute
 
     constructor() {
         super();
@@ -31,6 +32,7 @@ export class HTMLZooduckIconToggleElement extends HTMLZooduckIconBaseElement {
             'toggleontextcolor',
             'togglestate',
             'toggleswitchcolor',
+            'width',
         ];
     }
 
@@ -152,9 +154,16 @@ export class HTMLZooduckIconToggleElement extends HTMLZooduckIconBaseElement {
     }
 
     private _calcTextWidth(): number {
+        const fixedWidth = parseInt(this._width, 10);
+        const widthBeforePadding = parseInt(this.size, 10);
+
+        if (fixedWidth) {
+            return (fixedWidth - widthBeforePadding);
+        }
+
         const canvas = document.createElement('canvas');
         const context = canvas.getContext('2d');
-        const fontSize = `${(parseInt(this.size, 10) * .3)}px`;
+        const fontSize = `${(widthBeforePadding * .3)}px`;
         const font = `${fontSize} ${this._fontFamily}`;
         context.font = font;
 
@@ -259,6 +268,14 @@ export class HTMLZooduckIconToggleElement extends HTMLZooduckIconBaseElement {
 
     public get toggleswitchcolor(): string {
         return this._toggleSwitchColor;
+    }
+
+    public set width(val: string) {
+        this._width = val;
+    }
+
+    public get width(): string {
+        return this._width;
     }
 
     protected attributeChangedCallback(name: string, _oldVal: string, newVal: string) {
