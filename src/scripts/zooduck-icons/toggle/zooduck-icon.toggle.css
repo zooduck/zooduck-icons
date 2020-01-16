@@ -61,6 +61,7 @@
     height: calc(var(--zooduck-icon-size) * .375);
     background-color: #fff;
     clip-path: circle(50%);
+    border-radius: 50%;
     transition: all .25s;
 }
 .toggle-icon input[type=checkbox] {

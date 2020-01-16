@@ -130,6 +130,7 @@ export class HTMLZooduckIconToggleElement extends HTMLZooduckIconBaseElement {
                 height: calc(var(--zooduck-icon-size) * .375);
                 background-color: var(--toggle-icon-switch-color);
                 clip-path: circle(50%);
+                border-radius: 50%;
                 transition: all .25s;
             }
             .toggle-icon input[type=checkbox] {
@@ -171,7 +172,12 @@ export class HTMLZooduckIconToggleElement extends HTMLZooduckIconBaseElement {
             ? this._toggleOnText
             : this._toggleOffText;
 
-        return context.measureText(dominantText).width;
+        const toggleIconSwitchSize = parseInt(this.size, 10) * .375;
+
+        const dominantTextWidth = context.measureText(dominantText).width;
+        const singleCharacterWidth = dominantTextWidth / dominantText.length;
+
+        return dominantTextWidth - toggleIconSwitchSize + singleCharacterWidth;
     }
 
     private _build() {

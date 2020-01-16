@@ -45,7 +45,8 @@ export class HTMLZooduckIconLocationElement extends HTMLZooduckIconBaseElement {
                 display: flex;
                 align-items: center;
                 justify-content: center;
-                clip-path: circle(48%);
+                clip-path: circle(50%);
+                border-radius: 50%;
                 width: 80%;
                 height: 80%;
                 z-index: 1;
@@ -56,7 +57,8 @@ export class HTMLZooduckIconLocationElement extends HTMLZooduckIconBaseElement {
                 display: flex;
                 align-items: center;
                 justify-content: center;
-                clip-path: circle(48%);
+                clip-path: circle(50%);
+                border-radius: 50%;
                 width: 70%;
                 height: 70%;
                 background-color: var(--zooduck-icon-background-color);
@@ -64,7 +66,8 @@ export class HTMLZooduckIconLocationElement extends HTMLZooduckIconBaseElement {
             .location-icon__point {
                 width: 60%;
                 height: 60%;
-                clip-path: circle(48%);
+                clip-path: circle(50%);
+                border-radius: 50%;
                 background-color: var(--zooduck-icon-color);
             }
             .location-icon__x-bar,

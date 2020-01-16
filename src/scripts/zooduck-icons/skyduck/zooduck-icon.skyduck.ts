@@ -57,6 +57,7 @@ export class HTMLZooduckIconSkyduckElement extends HTMLZooduckIconBaseElement {
                 align-items: center;
                 justify-content: center;
                 clip-path: circle(50%);
+                border-radius: 50%;
                 background-color: var(--zooduck-icon-color);
                 grid-column: 1 / span 15;
                 grid-row: 1 / span 15;
@@ -65,6 +66,7 @@ export class HTMLZooduckIconSkyduckElement extends HTMLZooduckIconBaseElement {
                 width: 60%;
                 height: 60%;
                 clip-path: circle(50%);
+                border-radius: 50%;
                 background-color: var(--zooduck-icon-background-color);
             }
             .skyduck-icon__eye-left,
@@ -72,6 +74,7 @@ export class HTMLZooduckIconSkyduckElement extends HTMLZooduckIconBaseElement {
                 z-index: 1;
                 background-color: var(--zooduck-icon-background-color);
                 clip-path: circle(50%);
+                border-radius: 50%;
             }
             .skyduck-icon__eye-right {
                 grid-column: 4 / span 2;

@@ -23,6 +23,7 @@
     align-items: center;
     justify-content: center;
     clip-path: circle(50%);
+    border-radius: 50%;
     background-color: #222;
     grid-column: 1 / span 15;
     grid-row: 1 / span 15;
@@ -31,6 +32,7 @@
     width: 60%;
     height: 60%;
     clip-path: circle(50%);
+    border-radius: 50%;
     background-color: #fff;
 }
 .skyduck-icon__eye-left,
@@ -38,6 +40,7 @@
     z-index: 1;
     background-color: #fff;
     clip-path: circle(50%);
+    border-radius: 50%;
 }
 .skyduck-icon__eye-right {
     grid-column: 4 / span 2;

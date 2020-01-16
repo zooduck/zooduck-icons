@@ -134,6 +134,7 @@ export class HTMLZooduckIconSkyduckInFlightElement extends HTMLZooduckIconBaseEl
                 align-items: center;
                 justify-content: center;
                 clip-path: circle(50%);
+                border-radius: 50%;
                 background-color: var(--zooduck-icon-color);
                 grid-column: 1 / span 15;
                 grid-row: 1 / span 15;

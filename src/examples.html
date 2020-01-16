@@ -22,6 +22,7 @@
             const iconNames = [
                 'circle',
                 'location',
+                'menu',
                 'skyduck',
                 'skyduck-alt',
                 'skyduck-in-flight',
@@ -95,7 +96,7 @@
             const buildCodeExamples = () => {
                 iconNames.forEach((iconName) => {
                     const baseIconEl = document.createElement(`zooduck-icon-${iconName}`);
-                    const attrConfig = iconName.search(/^(circle|location|skyduck|skyduck-alt)$/) !== -1
+                    const attrConfig = iconName.search(/^(circle|location|menu|skyduck|skyduck-alt)$/) !== -1
                         ? 'standard'
                         : iconName;
                     const attributes = iconAttributes[attrConfig];

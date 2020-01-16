@@ -62,6 +62,7 @@ export class HTMLZooduckIconSpinnerBladesElement extends HTMLZooduckIconBaseElem
                 height: var(--zooduck-icon-size);
                 background-color: var(--zooduck-icon-background-color);
                 clip-path: circle(50%);
+                border-radius: 50%;
                 padding: 10px;
             }
 
