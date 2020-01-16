@@ -33,7 +33,7 @@ export class HTMLZooduckIconMenuElement extends HTMLZooduckIconBaseElement {
             .icon-menu {
                 display: grid;
                 grid-template-rows: repeat(3, auto);
-                grid-gap: calc(var(--zooduck-icon-size) * .1);
+                align-items: center;
                 width: var(--zooduck-icon-size);
                 height: var(--zooduck-icon-size);
                 background-color: var(--zooduck-icon-background-color);
@@ -41,6 +41,7 @@ export class HTMLZooduckIconMenuElement extends HTMLZooduckIconBaseElement {
             }
             .icon-menu__bar {
                 background-color: var(--zooduck-icon-color);
+                height: calc(var(--zooduck-icon-size) / 5 - 20%);
             }
         `;
 
