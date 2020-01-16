@@ -1,6 +1,6 @@
 {
   "name": "zooduck-icons",
-  "version": "0.2.3-alpha",
+  "version": "0.3.0-alpha",
   "description": "css icon library for skyduck",
   "main": "index.js",
   "scripts": {
