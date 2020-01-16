@@ -106,7 +106,7 @@ export class HTMLZooduckIconBaseElement extends HTMLElement {
     public set size(val: string) {
         const parsedVal = val || this._defaultSize;
         this._size = parseInt(parsedVal, 10).toString();
-        this._syncAttr('size', val);
+        this._syncAttr('size', parsedVal);
         this.update();
     }
 
