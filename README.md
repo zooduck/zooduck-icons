@@ -41,6 +41,7 @@ or:
 |---|----------|
 |zooduck-icon-circle|backgroundcolor, color, size|
 |zooduck-icon-location|backgroundcolor, color, size|
+|zooduck-icon-menu|backgroundcolor, color, size|
 |zooduck-icon-skyduck|backgroundcolor, color, size|
 |zooduck-icon-skyduck-alt|backgroundcolor, color, size|
 |zooduck-icon-skyduck-in-flight|background-color, color, size|
