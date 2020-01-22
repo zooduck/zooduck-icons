@@ -1,7 +1,7 @@
 # Zooduck Icons
-Sample library of scalable CSS icons built from pure HTML Web Components
+Sample library of scalable CSS icons built as pure <a href="https://developer.mozilla.org/en-US/docs/Web/Web_Components" target="_blank">HTML Web Components</a>.
 
-![alt text](https://github.com/zooduck/screenshots/blob/master/zooduck-icons/zooduck-icons-v0.2.1-alpha.png)
+![alt text](https://github.com/zooduck/screenshots/blob/master/zooduck-icons/zooduck-icons-v0.4.0-alpha.png)
 
 ## Examples
 https://zooduck.github.io/zooduck-icons/dist/examples.html
@@ -36,8 +36,8 @@ or:
 </script>
 ```
 
-## Supported attributes / properties
-|Tag|Attributes / Properties|
+## Supported attributes
+|Tag|Attributes|
 |---|----------|
 |zooduck-icon-circle|backgroundcolor, color, size|
 |zooduck-icon-location|backgroundcolor, color, size|
