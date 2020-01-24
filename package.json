@@ -1,8 +1,10 @@
 {
-  "name": "zooduck-icons",
+  "name": "@zooduck/zooduck-icons",
   "version": "0.4.0-alpha",
-  "description": "css icon library for skyduck",
-  "main": "index.js",
+  "description": "CSS Icon Library",
+  "main": "index.ts",
+  "url": "https://github.com/zooduck/zooduck-icons",
+  "repository": "git://github.com/zooduck/zooduck-icons.git",
   "scripts": {
     "test": "jest",
     "lint": "eslint ./src/**/*.*",
