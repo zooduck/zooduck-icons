@@ -5,6 +5,7 @@ type ToggleState = 'off'|'on';
 const tagName = 'zooduck-icon-toggle';
 
 export class HTMLZooduckIconToggleElement extends HTMLZooduckIconBaseElement {
+    private _disabled = false;
     private _fontFamily = 'Calibri, sans-serif';
     private _toggleSwitchColor = '#fff';
     private _toggleOffColor = '#ccc';
@@ -22,6 +23,7 @@ export class HTMLZooduckIconToggleElement extends HTMLZooduckIconBaseElement {
 
     static get observedAttributes() {
         return [
+            'disabled',
             'fontfamily',
             'size',
             'toggleoffcolor',
@@ -40,10 +42,13 @@ export class HTMLZooduckIconToggleElement extends HTMLZooduckIconBaseElement {
         const checked = this._toggleState === 'on'
             ? 'checked'
             : '';
+        const disabled = this._disabled
+            ? 'disabled'
+            : '';
         const content = new DOMParser().parseFromString(`
             <div class="toggle-icon">
                 <label>
-                    <input type="checkbox" ${checked} />
+                    <input type="checkbox" ${checked} ${disabled} />
                     <div class="toggle-icon__switch-base">
                         <span class="toggle-icon__text --off">${this._toggleOffText}</span>
                         <span class="toggle-icon__text --on">${this._toggleOnText}</span>
@@ -192,6 +197,7 @@ export class HTMLZooduckIconToggleElement extends HTMLZooduckIconBaseElement {
         this._toggleState = this._toggleState === 'off'
             ? 'on'
             : 'off';
+
         this.dispatchEvent(new CustomEvent('zooduck-icon-toggle:change', {
             detail: {
                 toggleState: this._toggleState,
@@ -202,6 +208,16 @@ export class HTMLZooduckIconToggleElement extends HTMLZooduckIconBaseElement {
     private _registerEvents() {
         const checkbox = this.content.querySelector('input[type=checkbox]');
         checkbox.addEventListener('change', this._onCheckboxChange.bind(this));
+    }
+
+    public set disabled(val: any) {
+        const disabled = (typeof(val) === 'string' || val) ? true : false;
+
+        this._disabled = disabled;
+    }
+
+    public get disabled(): any {
+        return this._disabled;
     }
 
     public set fontfamily(val: string) {
@@ -285,7 +301,7 @@ export class HTMLZooduckIconToggleElement extends HTMLZooduckIconBaseElement {
     }
 
     protected attributeChangedCallback(name: string, _oldVal: string, newVal: string) {
-        if (newVal === null || this[name] === newVal) {
+        if (this[name] === newVal) {
             return;
         }
 
