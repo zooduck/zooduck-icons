@@ -45,4 +45,4 @@ or:
 |zooduck-icon-skyduck|backgroundcolor, color, size|
 |zooduck-icon-skyduck-alt|backgroundcolor, color, size|
 |zooduck-icon-skyduck-in-flight|background-color, color, size|
-|zooduck-icon-toggle|size, toggleoffcolor, toggleofftext, toggleoncolor, toggleontext, togglestate, toggleswitchcolor|
+|zooduck-icon-toggle|disabled, size, toggleoffcolor, toggleofftext, toggleoncolor, toggleontext, togglestate, toggleswitchcolor|
