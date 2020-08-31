@@ -38,6 +38,8 @@ export class HTMLZooduckIconSkyduckAltElement extends HTMLZooduckIconBaseElement
                 display: grid;
                 grid-template-columns: repeat(20, 5%);
                 grid-template-rows: repeat(20, 5%);
+                padding-top: 5%;
+                padding-left: 5%;
             }
             .skyduck-grid__wing-left {
                 z-index: 0;
